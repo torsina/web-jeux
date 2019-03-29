@@ -6,6 +6,9 @@
     "es6": true,
     "jquery": true
   },
+  "globals": {
+    "PIXI": "readable"
+  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2017
@@ -80,7 +83,7 @@
     "eol-last": "error",
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "id-length": ["error", { "exceptions": ["i", "j", "a", "b", "t", "r", "d", "x", "y", "n", "m"] }],
-    "indent": ["error", 4],
+    "indent": ["error", 4, {"SwitchCase": 1}],
     "key-spacing": "error",
     "keyword-spacing": ["error", {
       "overrides": {

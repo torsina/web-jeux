@@ -1,6 +1,9 @@
-export class Entity {
+import { GridElement } from "./GridElement.js";
+
+export class Entity extends GridElement {
     constructor(data) {
         const { health, maxHealth, coords, grid, handlers: { deathHandler } } = data;
+        super(coords, grid);
         this.setMaxHealth(maxHealth);
         this.setHealth(health);
         this.handlers = {

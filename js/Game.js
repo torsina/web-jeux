@@ -1,10 +1,14 @@
-import { Grid } from "./world/Grid.js";
-import { Player } from "./entity/Player.js";
+import { Controls } from "./Controls.js";
+import { Player } from "./Player.js";
+
 
 export class Game {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.grid = new Grid();
-        this.player = new Player();
+    constructor() {
+        // app generation
+        this.app = new PIXI.Application(800, 600, { backgroundColor: 0x1099bb });
+        document.body.appendChild(this.app.view);
+        // setup controls
+        this.controls = new Controls();
+        this.player = new Player(this.app, 100, 100);
     }
 }
