@@ -9,6 +9,6 @@ export class Game {
         document.body.appendChild(this.app.view);
         // setup controls
         this.controls = new Controls();
-        this.player = new Player(this.app, 100, 100);
+        this.player = new Player(this.app, this.controls, 100, 100);
     }
 }
