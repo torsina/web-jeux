@@ -9,16 +9,18 @@ export class Player extends Entity {
         this.speed = 4;
         // hitArea
         this.sprite.interactive = true;
-        this.sprite.hitArea = new PIXI.Rectangle(0, 0, 100, 100);
+        this.sprite.hitArea = new PIXI.Rectangle(x, y, 100, 100);
         this.startMovement();
     }
     startMovement() {
         this._movementMiddleware = (timeDelta) => {
             const { controls: { left, right } } = this;
-            console.log(this.sprite.hitArea);
+            //console.log(this.sprite.hitArea);
             if(left && !right) {
+                this.sprite.hitArea.x -= this.speed * timeDelta;
                 this.sprite.position.x -= this.speed * timeDelta;
             } else if(!left && right) {
+                this.sprite.hitArea.x += this.speed * timeDelta;
                 this.sprite.position.x += this.speed * timeDelta;
             }
         };

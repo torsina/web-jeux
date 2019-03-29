@@ -1,6 +1,6 @@
+import { AssetLoader } from "./AssetLoader.js";
 import { Controls } from "./Controls.js";
 import { Player } from "./Player.js";
-
 
 export class Game {
     constructor() {
@@ -10,5 +10,7 @@ export class Game {
         // setup controls
         this.controls = new Controls();
         this.player = new Player(this.app, this.controls, 100, 100);
+        // load ressources then do everything else
+        this.assetLoader = new AssetLoader()
     }
 }
