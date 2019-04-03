@@ -1,4 +1,4 @@
-export class Controls {
+export class PlayerControls {
     constructor() {
         this.custom = {
             left: -1,

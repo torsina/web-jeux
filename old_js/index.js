@@ -5,7 +5,7 @@ $(document).ready(() => {
     document.body.appendChild(app.view);
 
 // create a new Sprite from an image path
-    var bunny = PIXI.Sprite.fromImage('./images/player.png');
+    var bunny = PIXI.Sprite.fromImage('./assets/player.png');
     bunny.scale.x = 0.2;
     bunny.scale.y = 0.2;
 
@@ -40,7 +40,7 @@ $(document).ready(() => {
         ctx.drawImage(img, 0, 0);
         console.log(img);
     };
-     img.src = './images/player.png'; // définit le chemin de la source
+     img.src = './assets/player.png'; // définit le chemin de la source
      */
 });
 

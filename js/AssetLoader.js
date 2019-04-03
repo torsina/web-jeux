@@ -1,24 +1,39 @@
 export class AssetLoader {
-    constructor(ressources) {
-        this.loader = PIXI.Loader.shared; // PixiJS exposes a premade instance for you to use.
-
-        // Chainable `add` to enqueue a resource
-        this.loader.add("bunny", "data/bunny.png")
-            .add("spaceship", "assets/spritesheet.json");
-
-        // The `load` method loads the queue of resources, and calls the passed in callback called once all
-        // resources have loaded.
-        this.loader.load((loader, resources) => {
-        // resources.bunny.texture
-        });
-
-        // throughout the process multiple signals can be dispatched.
-        this.loader.onProgress.add(() => {}); // called once per loaded/errored file
-        this.loader.onError.add(() => {}); // called once per errored file
-        this.loader.onLoad.add(() => {}); // called once per loaded file
-        this.loader.onComplete.add(() => {}); // called once when the queued resources all load.
+    constructor(app) {
+        this.loader = app.loader;
     }
-    load(middleware) {
-        this.loader.load(middleware);
+    async init() {
+        return new Promise((resolve, reject) => {
+            $.getJSON("config/ressources.json", (assets) => {
+                Object.entries(assets).forEach(([key, value]) => {
+                    this.loader.add(key, value);
+                });
+                // once all resources are loaded
+                this.loader.load((loader, resources) => {
+                    resolve(resources);
+                });
+
+                // called once per loaded/errored file
+                this.loader.onProgress.add((...args) => {
+                    // console.log(`onProgress`, args);
+                });
+
+                // called once per errored file
+                this.loader.onError.add((...args) => {
+                    console.log(`onError`, args);
+                    reject(args);
+                });
+
+                // called once per loaded file
+                this.loader.onLoad.add((...args) => {
+                    // console.log(`onLoad`, args);
+                });
+
+                // called once when the queued resources all load.
+                this.loader.onComplete.add((...args) => {
+                    // console.log(`onComplete`, args);
+                });
+            });
+        });
     }
 }
