@@ -11,20 +11,20 @@ export class PlayerControls {
         window.onkeydown = (key) => {
             const code = key.keyCode ? key.keyCode : key.which;
             switch(code) {
-                case this.custom.left:      // custom
-                case 37:                    // left arrow
-                case 81: {                  // q
+                case this.custom.left: // custom
+                case 37: // left arrow
+                case 81: { // q
                     this.left = true;
                     break;
                 }
-                case this.custom.right:     // custom
-                case 39:                    // left arrow
-                case 68: {                  // d
+                case this.custom.right: // custom
+                case 39: // left arrow
+                case 68: { // d
                     this.right = true;
                     break;
                 }
-                case this.custom.fire:      // custom
-                case 32: {                  // spacebar
+                case this.custom.fire: // custom
+                case 32: { // spacebar
                     this.fire = true;
                     break;
                 }
@@ -33,20 +33,20 @@ export class PlayerControls {
         window.onkeyup = (key) => {
             const code = key.keyCode ? key.keyCode : key.which;
             switch(code) {
-                case this.custom.left:      // custom
-                case 37:                    // left arrow
-                case 81: {                  // q
+                case this.custom.left: // custom
+                case 37: // left arrow
+                case 81: { // q
                     this.left = false;
                     break;
                 }
-                case this.custom.right:     // custom
-                case 39:                    // left arrow
-                case 68: {                  // d
+                case this.custom.right: // custom
+                case 39: // left arrow
+                case 68: { // d
                     this.right = false;
                     break;
                 }
-                case this.custom.fire:      // custom
-                case 32: {                  // spacebar
+                case this.custom.fire: // custom
+                case 32: { // spacebar
                     this.fire = false;
                     break;
                 }

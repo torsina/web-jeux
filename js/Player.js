@@ -5,8 +5,8 @@ export class Player extends Entity {
     constructor(game, x, y) {
         super(game, x, y, "player");
         this.controls = new PlayerControls();
-        this.scale(200, 200);
-        this.speed = 4;
+        this.scale(100, 100);
+        this.speed = 6;
         // hitArea
         this.sprite.interactive = true;
         // make sprite screen bound

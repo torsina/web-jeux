@@ -17,7 +17,7 @@ export class Entity {
             if(left && !right) {
                 // collision detection
                 this.newHitArea.x -= this.speed * timeDelta;
-                let isColliding = this.checkCollision();
+                let isColliding = this.entityCollision();
                 // game screen border collision
                 // only fires if screenBound is defined in upper class layers
                 if(!isColliding && this.screenBound) {
@@ -34,7 +34,7 @@ export class Entity {
             } else if(!left && right) {
                 // collision detection
                 this.newHitArea.x += this.speed * timeDelta;
-                let isColliding = this.checkCollision();
+                let isColliding = this.entityCollision();
                 // game screen border collision
                 // only fires if screenBound is defined in upper class layers
                 if(!isColliding && this.screenBound) {
@@ -55,12 +55,14 @@ export class Entity {
     stopMovement() {
         this.app.ticker.remove(this._movementMiddleware);
     }
-    checkCollision() {
+    entityCollision() {
         let isColliding = false;
         for(let i = 0; i < this.app.stage.children.length; i++) {
             const element = this.app.stage.children[i];
-            isColliding = Entity.collision(this.newHitArea, element);
-            if(isColliding) break;
+            if(element !== this.sprite) {
+                isColliding = Entity.collision(this.newHitArea, element);
+                if(isColliding) break;
+            }
         }
         return isColliding;
     }

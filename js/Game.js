@@ -14,8 +14,7 @@ export class Game {
             const { screen } = this.app.renderer;
             this.screen = new PIXI.Rectangle(screen.x, screen.y, screen.width, screen.height);
             console.log(this);
-            this.player = new Player(this, 200, 200);
-
+            this.player = new Player(this, 400, 450);
         });
     }
 }
